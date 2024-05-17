@@ -33,19 +33,19 @@ Sumă a doi operanzi ținând cont și de transportul din rangul inferior. Poate
 Utilizează:
 - \( n \) sumatoare de tip full-adder, cu primul carry conectat întotdeauna la 0.
 - \( n-1 \) sumatoare de tip full-adder și un half-adder (primul din serie).
-- Carry-in al sumatorului \( i \) este conectat la carry-out al sumatorului \( i-1 \) (C_in(i + 1) = C_out(i), C_in(0) = 0).
+- Carry-in al sumatorului \( i \) este conectat la carry-out al sumatorului \( i-1 \), `C_in(i + 1) = C_out(i), C_in(0) = 0`
 - Ineficient deoarece fiecare sumator așteaptă rezultatul sumatorului anterior.
 
 ![Ripple-Carry Adder](photos/ripple_carry_adder.webp)
 
 ### Scazatoare
 Folosește un sumator:
-- Fie \( B = \tilde{B} + 1 \), \( C_{in} = 0 \)
-- Fie \( B = \tilde{B} \), \( C_{in} = 1 \)
+- Fie  `B = ~B + 1`, `C_in = 0`
+- Fie `B = ~B`, `C_in = 1`
 
 ### Carry-Look-Ahead Adder
-- \( C(i + 1) = A(i) \cdot B(i) + C(i) \cdot (A(i) \oplus B(i)) \)
+- `C(i + 1) = A(i) * B(i) + C(i) * (A(i) + B(i))`
 - Un sumator fie va genera un bit sau va propaga carry-ul anterior.
-- \( C_{in}(i + 1) = G(i) + C_{out}(i) \cdot P(i) \), \( G(i) = A(i) \cdot B(i) \), \( P(i) = A(i) \oplus B(i) \)
+- `C_in(i + 1) = G(i) + C_out(i) * P(i), G(i) = A(i) * B(i), P(i) = A(i) XOR B(i)`
 - Versiunea echivalentă, folosind XOR, este mai lentă decât varianta originală, dar mai rapidă pentru un carry-look-ahead pe mai multe nivele.
 ![Carry-Look-Ahead Adder](photos/4-bit-Carry-Lookahead-Adder-Architecture.png)
